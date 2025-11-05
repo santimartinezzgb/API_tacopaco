@@ -16,13 +16,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(`mongodb+srv://${mongoUsuario}:${mongoContrasena}@cluster0.fgumghx.mongodb.net/${database}`)
-    .then(() => {
-        app.listen(PUERTO, "0.0.0.0", () => {
-            console.clear();
-            console.log(`Servidor y Mongo corriendo en http://localhost:${PUERTO}`);
-        });
-    })
+    .then(() => { console.log(`Conexión a MongoDB exitosa`) })
     .catch((err) => console.log(`Error de conexión a MongoDB: ${err}`));
+
+app.listen(PUERTO, "0.0.0.0", () => {
+    console.clear();
+    console.log(`Servidor y Mongo corriendo en http://localhost:${PUERTO}`);
+});
 
 const mesaSchema = new mongoose.Schema(
     { nombre: String },
