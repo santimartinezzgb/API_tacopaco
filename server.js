@@ -18,16 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(`mongodb+srv://${mongoUsuario}:${mongoContrasena}@cluster0.fgumghx.mongodb.net/${database}`)
-<<<<<<< HEAD
-    .then(() => {
-        console.clear();
-        console.log("Conectado a MongoDB");
-    })
-    .catch(err => {
-        console.error("Error de conexión a MongoDB:", err);
-    });
-
-=======
     .then(() => { console.log(`Conexión a MongoDB exitosa`) })
     .catch((err) => console.log(`Error de conexión a MongoDB: ${err}`));
 
@@ -35,18 +25,6 @@ app.listen(PUERTO, "0.0.0.0", () => {
     console.clear();
     console.log(`Servidor y Mongo corriendo en http://localhost:${PUERTO}`);
 });
-
-const mesaSchema = new mongoose.Schema(
-    { nombre: String },
-    { versionKey: false }
-);
->>>>>>> refs/remotes/origin/master
-
-app.listen(PUERTO, "0.0.0.0", () => {
-    console.clear();
-    console.log(`Servidor Express corriendo en http://localhost:${PUERTO}`);
-});
-
 
 
 const mesaSchema = new mongoose.Schema(
