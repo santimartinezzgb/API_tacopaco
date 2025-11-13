@@ -10,8 +10,6 @@ const PUERTO = process.env.PUERTO || 3000;
 
 
 const database = "TacoPaco";
-const collectionMesa = "Mesas";
-const collectionPedido = "Pedido";
 
 
 app.use(express.json());
@@ -26,23 +24,8 @@ app.listen(PUERTO, "0.0.0.0", () => {
     console.log(`Servidor y Mongo corriendo en http://localhost:${PUERTO}`);
 });
 
-
-const mesaSchema = new mongoose.Schema(
-    {
-        nombre: { type: String, required: true, unique: true },
-        ocupada: { type: Boolean, default: false }
-    },
-    { versionKey: false }
-);
-const pedidoSchema = new mongoose.Schema(
-    {
-        precioTotal: { type: Number, required: true }
-    },
-    { versionKey: false }
-);
-
-const Mesa = mongoose.model(collectionMesa, mesaSchema);
-const Pedido = mongoose.model(collectionPedido, pedidoSchema);
+const Mesa = require('./models/Mesa.js');
+const Pedido = require('./models/Pedido.js');
 
 
 app.get('/mesas', async (req, res) => {
