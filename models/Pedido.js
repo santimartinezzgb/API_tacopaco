@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const PedidoSchema = new mongoose.Schema({
-    precioTotal: { type: Number, required: true },
-    fecha: { type: Date, default: Date.now }
+    precioTotal: { type: Number, required: true }
 },
     { versionKey: false });
 
