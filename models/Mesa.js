@@ -1,9 +1,8 @@
-const mongoose = require('mongoose')
-const mesaSchema = new mongoose.Schema(
-    {
-        nombre: { type: String, required: true, unique: true },
-        ocupada: { type: Boolean, default: false }
-    },
-    { versionKey: false }
-);
-const Mesa = mongoose.model("Mesas", mesaSchema);
+const mongoose = require('mongoose');
+
+const MesaSchema = new mongoose.Schema({
+    nombre: { type: String, required: true },
+    ocupada: { type: Boolean, default: false }
+});
+
+module.exports = mongoose.models.Mesa || mongoose.model('Mesa', MesaSchema);
