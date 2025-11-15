@@ -39,11 +39,11 @@ app.get('/mesas', async (req, res) => {
 app.put('/mesas/:nombre', async (req, res) => {
     try {
         const nombreMesa = req.params.nombre;
-        const { ocupada } = req.body;
+        const { ocupada, a_pagar } = req.body;
 
         const mesa = await Mesa.findOneAndUpdate(
             { nombre: nombreMesa },
-            { ocupada },
+            { ocupada, a_pagar },
             { new: true }
         );
 
@@ -51,13 +51,14 @@ app.put('/mesas/:nombre', async (req, res) => {
             return res.status(404).json({ error: `Mesa '${nombreMesa}' no encontrada` });
         }
 
-        console.log(`✅ Mesa '${nombreMesa}' actualizada a ocupada=${ocupada}`);
+        console.log(`Mesa '${nombreMesa}' actualizada: ocupada=${ocupada}, a_pagar=${a_pagar}`);
         res.json(mesa);
+
     } catch (err) {
-        console.error("❌ Error al actualizar mesa:", err);
         res.status(500).json({ error: err.message });
     }
 });
+
 
 
 
