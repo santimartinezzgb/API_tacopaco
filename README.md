@@ -24,6 +24,8 @@ PUERTO=3000
 
 ## ▶️ Ejecutar
 ```bash
+pnpm run start
+o
 node server.js
 ```
 
